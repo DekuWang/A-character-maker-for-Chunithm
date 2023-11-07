@@ -1,0 +1,283 @@
+<CharaData>
+  <dataName>chara099990</dataName>
+  <releaseTagName>
+    <id>14</id>
+    <str>v2 2.10.00</str>
+    <data />
+  </releaseTagName>
+  <netOpenName>
+    <id>2300</id>
+    <str>v2_10 11_2</str>
+    <data />
+  </netOpenName>
+  <disableFlag>false</disableFlag>
+  <name>
+    <id>99990</id>
+    <str>Marbel</str>
+    <data />
+  </name>
+  <explainText />
+  <sortName>Marbel</sortName>
+  <works>
+    <id>514</id>
+    <str>&#33258;&#35069;</str>
+    <data />
+  </works>
+  <illustratorName>
+    <id>50</id>
+    <str />
+    <data />
+  </illustratorName>
+  <defaultHave>true</defaultHave>
+  <rareType>0</rareType>
+  <normCondition>
+    <conditions />
+  </normCondition>
+  <dressCode>0</dressCode>
+  <defaultImages>
+    <id>99990</id>
+    <str>chara9999_00</str>
+    <data />
+  </defaultImages>
+  <addImages1>
+    <changeImg>false</changeImg>
+    <charaName>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </charaName>
+    <image>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </image>
+    <rank>1</rank>
+  </addImages1>
+  <addImages2>
+    <changeImg>false</changeImg>
+    <charaName>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </charaName>
+    <image>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </image>
+    <rank>1</rank>
+  </addImages2>
+  <addImages3>
+    <changeImg>false</changeImg>
+    <charaName>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </charaName>
+    <image>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </image>
+    <rank>1</rank>
+  </addImages3>
+  <addImages4>
+    <changeImg>false</changeImg>
+    <charaName>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </charaName>
+    <image>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </image>
+    <rank>1</rank>
+  </addImages4>
+  <addImages5>
+    <changeImg>false</changeImg>
+    <charaName>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </charaName>
+    <image>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </image>
+    <rank>1</rank>
+  </addImages5>
+  <addImages6>
+    <changeImg>false</changeImg>
+    <charaName>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </charaName>
+    <image>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </image>
+    <rank>1</rank>
+  </addImages6>
+  <addImages7>
+    <changeImg>false</changeImg>
+    <charaName>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </charaName>
+    <image>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </image>
+    <rank>1</rank>
+  </addImages7>
+  <addImages8>
+    <changeImg>false</changeImg>
+    <charaName>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </charaName>
+    <image>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </image>
+    <rank>1</rank>
+  </addImages8>
+  <addImages9>
+    <changeImg>false</changeImg>
+    <charaName>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </charaName>
+    <image>
+      <id>-1</id>
+      <str>Invalid</str>
+      <data />
+    </image>
+    <rank>1</rank>
+  </addImages9>
+  <priority>0</priority>
+  <ranks>
+    <CharaRankData>
+      <index>1</index>
+      <type>1</type>
+      <rewardSkillSeed>
+        <rewardSkillSeed>
+          <id>61000025</id>
+          <str>&#12466;&#12540;&#12472;&#12502;&#12540;&#12473;&#12488;&#215;5</str>
+          <data />
+        </rewardSkillSeed>
+      </rewardSkillSeed>
+      <text>
+        <flavorTxtFile>
+          <path />
+        </flavorTxtFile>
+      </text>
+    </CharaRankData>
+    <CharaRankData>
+      <index>5</index>
+      <type>1</type>
+      <rewardSkillSeed>
+        <rewardSkillSeed>
+          <id>61000021</id>
+          <str>&#12466;&#12540;&#12472;&#12502;&#12540;&#12473;&#12488;&#215;1</str>
+          <data />
+        </rewardSkillSeed>
+      </rewardSkillSeed>
+      <text>
+        <flavorTxtFile>
+          <path />
+        </flavorTxtFile>
+      </text>
+    </CharaRankData>
+    <CharaRankData>
+      <index>10</index>
+      <type>1</type>
+      <rewardSkillSeed>
+        <rewardSkillSeed>
+          <id>61000025</id>
+          <str>&#12466;&#12540;&#12472;&#12502;&#12540;&#12473;&#12488;&#215;5</str>
+          <data />
+        </rewardSkillSeed>
+      </rewardSkillSeed>
+      <text>
+        <flavorTxtFile>
+          <path />
+        </flavorTxtFile>
+      </text>
+    </CharaRankData>
+    <CharaRankData>
+      <index>15</index>
+      <type>1</type>
+      <rewardSkillSeed>
+        <rewardSkillSeed>
+          <id>61000021</id>
+          <str>&#12466;&#12540;&#12472;&#12502;&#12540;&#12473;&#12488;&#215;1</str>
+          <data />
+        </rewardSkillSeed>
+      </rewardSkillSeed>
+      <text>
+        <flavorTxtFile>
+          <path />
+        </flavorTxtFile>
+      </text>
+    </CharaRankData>
+    <CharaRankData>
+      <index>25</index>
+      <type>1</type>
+      <rewardSkillSeed>
+        <rewardSkillSeed>
+          <id>61000101</id>
+          <str>&#38480;&#30028;&#31361;&#30772;&#12398;&#35388;&#215;1</str>
+          <data />
+        </rewardSkillSeed>
+      </rewardSkillSeed>
+      <text>
+        <flavorTxtFile>
+          <path />
+        </flavorTxtFile>
+      </text>
+    </CharaRankData>
+    <CharaRankData>
+      <index>50</index>
+      <type>1</type>
+      <rewardSkillSeed>
+        <rewardSkillSeed>
+          <id>61000111</id>
+          <str>&#30495;&#12539;&#38480;&#30028;&#31361;&#30772;&#12398;&#35388;&#215;1</str>
+          <data />
+        </rewardSkillSeed>
+      </rewardSkillSeed>
+      <text>
+        <flavorTxtFile>
+          <path />
+        </flavorTxtFile>
+      </text>
+    </CharaRankData>
+    <CharaRankData>
+      <index>100</index>
+      <type>1</type>
+      <rewardSkillSeed>
+        <rewardSkillSeed>
+          <id>61000121</id>
+          <str>&#32070;&#12539;&#38480;&#30028;&#31361;&#30772;&#12398;&#35388;&#215;1</str>
+          <data />
+        </rewardSkillSeed>
+      </rewardSkillSeed>
+      <text>
+        <flavorTxtFile>
+          <path />
+        </flavorTxtFile>
+      </text>
+    </CharaRankData>
+  </ranks>
+</CharaData>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DDSImageData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dataName></dataName>
+  <name>
+    <id></id>
+    <str></str>
+    <data />
+  </name>
+  <ddsFile0>
+    <path></path>
+  </ddsFile0>
+  <ddsFile1>
+    <path></path>
+  </ddsFile1>
+  <ddsFile2>
+    <path></path>
+  </ddsFile2>
+  <netOpenName>
+    <id>2300</id>
+    <str>v2_10 11_2</str>
+    <data />
+  </netOpenName>
+</DDSImageData>

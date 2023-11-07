@@ -1,0 +1,22 @@
+<DDSImageData>
+  <dataName>chara099990</dataName>
+  <name>
+    <id>99990</id>
+    <str>Marbel</str>
+    <data />
+  </name>
+  <ddsFile0>
+    <path>CHU_UI_Character_9999_00_00.dds</path>
+  </ddsFile0>
+  <ddsFile1>
+    <path>CHU_UI_Character_9999_00_01.dds</path>
+  </ddsFile1>
+  <ddsFile2>
+    <path>CHU_UI_Character_9999_00_02.dds</path>
+  </ddsFile2>
+  <netOpenName>
+    <id>2300</id>
+    <str>v2_10 11_2</str>
+    <data />
+  </netOpenName>
+</DDSImageData>
