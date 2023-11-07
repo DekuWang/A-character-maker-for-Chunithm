@@ -1,4 +1,4 @@
-# A-character-generator-for-Chunithm
+# A-character-maker-for-Chunithm
 可以用来做中二节奏的角色文件
 
 # 食用教程
