@@ -13,7 +13,8 @@ while(userInput != "q"):
         ID = input("Please enter a correct character ID(ID should be exact 4 numbers): ")
     pngName = imagePath
     pngCount = 1
-    nameStr = Chara(str(nameStr), ID, pngName)
+    name = str(nameStr)
+    nameStr = Chara(name, ID, pngName)
 
     transFromInput = input("Would you plan to add transform to your character? (y/n): ")
     while(transFromInput != "n" and pngCount < 9):
@@ -21,7 +22,14 @@ while(userInput != "q"):
         if pngInput == "q":
             break
         nameStr.addPng(pngInput)
+        transformName = input("Transform Name, leave it blank if you don't need to change name:")
+        if transformName != "":
+            nameStr.addNameStr(transformName)
+        else:
+            nameStr.addNameStr(name)
         pngCount += 1
+        if pngInput == 9:
+            break
         transFromInput = input("Would you plan to add more transform to your character? (y/n): ")
 
 

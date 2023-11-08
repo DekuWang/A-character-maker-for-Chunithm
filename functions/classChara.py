@@ -15,8 +15,8 @@ class Chara:
         self.dataName = "chara0"+ str(self.ID) +"0"
         #nameID looks like 7
         self.nameID = str(int(self.ID))
-        self.nameStr = nameStr
-        self.sortName = self.nameStr
+        self.nameStr = [nameStr]
+        self.sortName = self.nameStr[0]
         self.worksID = worksID
         self.worksStr = worksStr
         #defaultImagesID looks like 7
@@ -33,7 +33,7 @@ class Chara:
 
         root.find("dataName").text = self.dataName
         root.find("name").find("id").text = self.nameID + "0"
-        root.find("name").find("str").text = self.nameStr
+        root.find("name").find("str").text = self.nameStr[0]
         root.find("sortName").text = self.sortName
         root.find("works").find("id").text = self.worksID
         root.find("works").find("str").text = self.worksStr
@@ -44,7 +44,7 @@ class Chara:
             for i in range(1,len(self.png)):
                 root.find("addImages" + str(i)).find("changeImg").text = "true"
                 root.find("addImages" + str(i)).find("charaName").find("id").text = str(self.nameID) + str(i)
-                root.find("addImages" + str(i)).find("charaName").find("str").text = self.nameStr
+                root.find("addImages" + str(i)).find("charaName").find("str").text = self.nameStr[i]
                 root.find("addImages" + str(i)).find("image").find("id").text = self.defaultImagesID + str(i)
                 root.find("addImages" + str(i)).find("image").find("str").text = self.defaultImagesStr + str(i)
                 root.find("addImages" + str(i)).find("rank").text = str(5 * (i + 2))
@@ -110,3 +110,6 @@ class Chara:
 
     def addPng(self, png):
         self.png.append(png)
+
+    def addNameStr(self, str):
+        self.nameStr.append(str)
