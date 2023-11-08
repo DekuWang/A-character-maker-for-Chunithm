@@ -66,7 +66,7 @@ class Chara:
         for i in range(len(self.png)):
             tree3 = ET.parse(dds_xml)
             root3 = tree3.getroot()
-            root3.find("dataName").text = self.dataName
+            root3.find("dataName").text = "ddsImage0" + str(self.ID) + str(i)
             root3.find("name").find("id").text = self.nameID
             root3.find("name").find("str").text = self.nameStr
             root3.find("ddsFile0").find("path").text = "CHU_UI_Character_" + str(self.ID) + "_0" + str(i) + "_00.dds"
@@ -114,7 +114,7 @@ png1 = "testImage/1.png"
 png2 = "testImage/2.png"
 png3 = "testImage/3.png"
 
-Kokoro = Chara("Kokoro", "0001", png1, png2, png3)
+Kokoro = Chara("Kokoro", "0001", png1)
 
 Kokoro.xmlEdit()
 Kokoro.ToDDS()
