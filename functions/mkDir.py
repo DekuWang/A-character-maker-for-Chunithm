@@ -8,3 +8,5 @@ def mkDir(optName = "A514"):
         os.makedirs("outPut/" + optName + '/ddsImage')
     else:
         print('The direction exists.')
+
+mkDir()
