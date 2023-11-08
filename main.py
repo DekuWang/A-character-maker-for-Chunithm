@@ -7,14 +7,26 @@ CharaList = []
 userInput = str(input("Drop your image here, or press q to continue: "))
 while(userInput != "q"):
     imagePath = userInput[3:len(userInput)-1]
-
     nameStr = input("Character Name: ")
-    ID = int(input("Character ID: "))
+    ID = int(input("Character ID(ID should be exact 4 numbers): "))
+    while(len(str(ID)) != 4):
+        ID = input("Please enter a correct character ID(ID should be exact 4 numbers): ")
     pngName = imagePath
-
+    pngCount = 1
     nameStr = Chara(str(nameStr), ID, pngName)
+
+    transFromInput = input("Would you plan to add transform to your character? (y/n): ")
+    while(transFromInput != "n" and pngCount < 9):
+        pngInput = str(input("Drop your image here, or press q to exit: "))[3:len(userInput)-1]
+        if pngInput == "q":
+            break
+        nameStr.addPng(pngInput)
+        pngCount += 1
+        transFromInput = input("Would you plan to add more transform to your character? (y/n): ")
+
+
     CharaList.append(nameStr)
-    userInput = str(input("Drop your image here, or press q to continue: "))
+    userInput = str(input("Drop your image here to create a new character, or press q to continue: "))
 
 mkDir()
 

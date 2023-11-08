@@ -3,7 +3,7 @@ from wand import image
 import os
 
 class Chara:
-    def __init__(self, nameStr, ID, png1, png2 = None, png3 = None, png4 = None, png5 = None, png6 = None, png7 = None, png8 = None, png9 = None, optNum = "A514", worksID = "514", worksStr = "自製"):
+    def __init__(self, nameStr, ID, png1, optNum = "A514", worksID = "514", worksStr = "自製"):
         
         self.optNum = optNum
         self.optFolder = "outPut/" + self.optNum
@@ -25,7 +25,7 @@ class Chara:
         self.defaultImagesStr = "chara"+ str(self.ID) +"_0"
 
         #For toDDS
-        self.png = list(filter(None,[png1, png2, png3, png4, png5, png6, png7, png8, png9]))
+        self.png = [png1]
 
     def xmlEdit(self, file_xml = r'template/Chara.xml', works_xml = r'template/CharaWorks.xml', dds_xml = r'template/DDSImage.xml'):
         tree = ET.parse(file_xml)
@@ -67,8 +67,8 @@ class Chara:
             tree3 = ET.parse(dds_xml)
             root3 = tree3.getroot()
             root3.find("dataName").text = "ddsImage0" + str(self.ID) + str(i)
-            root3.find("name").find("id").text = self.nameID
-            root3.find("name").find("str").text = self.nameStr
+            root3.find("name").find("id").text = self.defaultImagesID + str(i)
+            root3.find("name").find("str").text = "chara"+ str(self.ID) +"_0" + str(i)
             root3.find("ddsFile0").find("path").text = "CHU_UI_Character_" + str(self.ID) + "_0" + str(i) + "_00.dds"
             root3.find("ddsFile1").find("path").text = "CHU_UI_Character_" + str(self.ID) + "_0" + str(i) + "_01.dds"
             root3.find("ddsFile2").find("path").text = "CHU_UI_Character_" + str(self.ID) + "_0" + str(i) + "_02.dds"
@@ -108,13 +108,5 @@ class Chara:
     def makeddsName(self, digit):
         return ["CHU_UI_Character_" + str(self.ID) + "_0" + digit + "_00.dds", "CHU_UI_Character_" + str(self.ID) + "_0" + digit + "_01.dds", "CHU_UI_Character_" + str(self.ID) + "_0" + digit + "_02.dds"]
 
-
-
-png1 = "testImage/1.png"
-png2 = "testImage/2.png"
-png3 = "testImage/3.png"
-
-Kokoro = Chara("Kokoro", "0001", png1)
-
-Kokoro.xmlEdit()
-Kokoro.ToDDS()
+    def addPng(self, png):
+        self.png.append(png)
