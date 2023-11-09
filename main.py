@@ -6,9 +6,10 @@ from time import sleep
 CharaList = []
 
 userInput = str(input("Drop your image here, or press q to continue: "))
-while(userInput != "q"):
+while(userInput != "q" and userInput != ""):
     #create character
-    imagePath = userInput[3:len(userInput)-1]
+    #imagePath = userInput[3:len(userInput)-1]
+    imagePath = userInput
     nameStr = input("Character Name: ")
 
     ID = input("Please enter a character ID(ID should be exact 4 numbers): ")
@@ -20,12 +21,13 @@ while(userInput != "q"):
 
     #create transform (within character)
     transFromInput = input("Would you plan to add transform to your character? (y/n): ")
-    while(transFromInput != "n" and pngCount < 9):
+    while(transFromInput != "n" and pngCount < 9 and transFromInput != ""):
         pngInput = str(input("Drop your image here to add a transform, or press q to exit: "))
         if pngInput == "q" or pngInput == "":
             break
 
-        pngPath = pngInput[3:len(userInput)-1]
+        #pngPath = pngInput[3:len(userInput)-1]
+        pngPath = pngInput
         nameStr.addPng(pngPath)
         transformName = input("Transform Name, leave it empty if you want to use default name:")
         if transformName != "":
