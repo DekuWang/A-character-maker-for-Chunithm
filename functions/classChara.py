@@ -55,6 +55,8 @@ class Chara:
             os.makedirs(charaFolder)
         tree.write(charaFolder + "/Chara.xml")
 
+        #Current unused due to don't know how to make works work
+        '''
         tree2 = ET.parse(works_xml)
         root2 = tree2.getroot()
         workFolder = self.optFolder + "/charaWorks/charaWorks000"+ str(self.worksID)
@@ -62,6 +64,7 @@ class Chara:
             os.makedirs(workFolder)
         if not os.path.exists(workFolder + "/CharaWorks.xml"):
             tree2.write(workFolder + "/CharaWorks.xml")
+        '''
 
         for i in range(len(self.png)):
             tree3 = ET.parse(dds_xml)

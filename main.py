@@ -1,39 +1,45 @@
 from functions.mkDir import mkDir
 from functions.classChara import *
+from functions.checkID import checkID
 from time import sleep
 
 CharaList = []
 
 userInput = str(input("Drop your image here, or press q to continue: "))
 while(userInput != "q"):
+    #create character
     imagePath = userInput[3:len(userInput)-1]
     nameStr = input("Character Name: ")
-    ID = int(input("Character ID(ID should be exact 4 numbers): "))
-    while(len(str(ID)) != 4):
-        ID = input("Please enter a correct character ID(ID should be exact 4 numbers): ")
-    pngName = imagePath
+
+    ID = input("Please enter a character ID(ID should be exact 4 numbers): ")
+    while not checkID(ID):
+        ID = input("Please enter a correct character ID(ID should be exact 4 NUMBER): ")
     pngCount = 1
     name = str(nameStr)
-    nameStr = Chara(name, ID, pngName)
+    nameStr = Chara(name, ID, imagePath)
 
+    #create transform (within character)
     transFromInput = input("Would you plan to add transform to your character? (y/n): ")
     while(transFromInput != "n" and pngCount < 9):
-        pngInput = str(input("Drop your image here, or press q to exit: "))[3:len(userInput)-1]
-        if pngInput == "q":
+        pngInput = str(input("Drop your image here to add a transform, or press q to exit: "))
+        if pngInput == "q" or pngInput == "":
             break
-        nameStr.addPng(pngInput)
-        transformName = input("Transform Name, leave it blank if you don't need to change name:")
+
+        pngPath = pngInput[3:len(userInput)-1]
+        nameStr.addPng(pngPath)
+        transformName = input("Transform Name, leave it empty if you want to use default name:")
         if transformName != "":
             nameStr.addNameStr(transformName)
         else:
             nameStr.addNameStr(name)
         pngCount += 1
-        if pngInput == 9:
+        if pngCount == 9:
+            print("Meet the maximum transform number.")
             break
-        transFromInput = input("Would you plan to add more transform to your character? (y/n): ")
-
+        #transFromInput = input("Would you plan to add more transform to your character? (y/n): ")
 
     CharaList.append(nameStr)
+    print()
     userInput = str(input("Drop your image here to create a new character, or press q to continue: "))
 
 mkDir()
