@@ -3,7 +3,7 @@ from wand import image
 import os
 
 class Chara:
-    def __init__(self, nameStr, ID, png1, optNum = "A514", worksID = "514", worksStr = "自製"):
+    def __init__(self, nameStr, ID, png1, worksID = "514", optNum = "A514", worksStr = "自製"):
         
         self.optNum = optNum
         self.optFolder = "outPut/" + self.optNum
@@ -116,3 +116,9 @@ class Chara:
 
     def addNameStr(self, str):
         self.nameStr.append(str)
+
+    def getNameStr(self):
+        return self.nameStr
+    
+    def getPng(self):
+        return self.png
