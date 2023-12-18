@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['main.py'],
+    ['mainPage.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -21,14 +21,14 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='main',
+    name='mainPage',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,

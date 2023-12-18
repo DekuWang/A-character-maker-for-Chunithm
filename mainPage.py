@@ -139,7 +139,7 @@ def createChar(win = None):
     addtransformButton.place(x = 380, y = 260, width=100, height=25)
 
     def transformWin():
-        if len(CharaList[len(CharaList)-1].getPng()) > 3:
+        if len(CharaList[len(CharaList)-1].getPng()) > 8:
             addtransformButton.configure(state="disabled")
         # idText
         idText.destroy()
