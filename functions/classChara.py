@@ -84,7 +84,8 @@ class Chara:
     def ToDDS(self):
         for i in range(len(self.png)):
             ddsName = self.makeddsName(str(i))
-            ddsFolder = self.optFolder + "/ddsImage/ddsImage0" + str(self.ID) + str(i) +"/"
+            # ddsFolder = self.optFolder + "/ddsImage/ddsImage0" + str(self.ID) + str(i) +"/"
+            ddsFolder = f"{self.optFolder}/ddsImage/ddsImage0{str(self.ID)}{str(i)}/"
 
             if not os.path.exists(ddsFolder):
                 os.makedirs(ddsFolder)
