@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TrophyData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dataName></dataName>
+  <netOpenName>
+    <id>2400</id>
+    <str>v2_20 00_0</str>
+    <data />
+  </netOpenName>
+  <disableFlag>false</disableFlag>
+  <name>
+    <id></id>
+    <str></str>
+    <data />
+  </name>
+  <explainText></explainText>
+  <defaultHave></defaultHave>
+  <rareType></rareType>
+  <normCondition>
+    <conditions />
+  </normCondition>
+  <priority>0</priority>
+</TrophyData>

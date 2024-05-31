@@ -1,7 +1,9 @@
+"""Python libs"""
+from time import sleep
+"""Project libs"""
 from functions.mkDir import mkDir
 from functions.classChara import *
 from functions.checkID import checkID
-from time import sleep
 
 CharaList = []
 
