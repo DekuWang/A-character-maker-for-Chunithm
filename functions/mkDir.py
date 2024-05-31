@@ -1,10 +1,18 @@
+"""
+Making directories for all elements
+"""
+# Build-in Modules
 import os
 
-def mkDir(optName = "A514"):
-    if not os.path.exists("outPut/" + optName):
-        os.makedirs("outPut/" + optName)
-        os.makedirs("outPut/" + optName + '/chara')
-        #os.makedirs("outPut/" + optName + '/charaWorks')
-        os.makedirs("outPut/" + optName + '/ddsImage')
+def mk_dir(opt_name = "A514"):
+    """ function for making directories
+    param: 
+        opt_name: something looks like AXXX
+    """
+    if not os.path.exists("outPut/" + opt_name):
+        os.makedirs("outPut/" + opt_name)
+        os.makedirs("outPut/" + opt_name + '/chara')
+        #os.makedirs("outPut/" + opt_name + '/charaWorks')
+        os.makedirs("outPut/" + opt_name + '/ddsImage')
     else:
         print('The direction exists.')
