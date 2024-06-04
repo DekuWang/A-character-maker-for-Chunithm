@@ -24,6 +24,25 @@ SKILL_DICT = {
     '道化師の狂気【LMN】': 6102008
     }
 
+RANK_REWARD_XML_TEXT = """
+<CharaRankData>
+      <index></index>
+      <type>1</type>
+      <rewardSkillSeed>
+        <rewardSkillSeed>
+          <id></id>
+          <str></str>
+          <data />
+        </rewardSkillSeed>
+      </rewardSkillSeed>
+      <text>
+        <flavorTxtFile>
+          <path />
+        </flavorTxtFile>
+      </text>
+    </CharaRankData>
+"""
+
 class Chara:
     """
     Class for making characters, 
@@ -39,29 +58,30 @@ class Chara:
         self.opt_num = opt_num
         self.opt_folder = "outPut/" + self.opt_num
 
-        #For XML
-        #self.chara_id looks like 0007
+        # For XML
+        # self.chara_id looks like 0007
         self.chara_id = chara_id
-        #dataName looks like chara000070
+        # dataName looks like chara000070
         self.dataname = "chara0"+ str(self.chara_id) +"0"
-        #name_id looks like 7
+        # name_id looks like 7
         self.name_id = str(int(self.chara_id))
         self.name_str = [name_str]
         self.sort_name = self.name_str[0]
         self.works_id = works_id
         self.work_str = work_str
-        #default_image_id looks like 7
+        # default_image_id looks like 7
         self.default_image_id = str(int(self.name_id))
-        #default_image_str looks like chara0007_0
+        # default_image_str looks like chara0007_0
         self.default_image_str = "chara"+ str(self.chara_id) +"_0"
 
+        # rank_reward is something looks like {level: [skill, amount], ...}
         self.rank_reward = rank_reward
         self.transfer_rank = transfer_rank
 
         #For toDDS
         self.png = [png1]
 
-    def xml_edit(self, file_xml:str = r'template/Chara.xml',
+    def xml_edit(self, file_xml:str = r'template/Chara copy.xml',
                 # works_xml:str = r'template/CharaWorks.xml',
                 dds_xml:str = r'template/DDSImage.xml'):
         """
@@ -81,30 +101,46 @@ class Chara:
 
         if len(self.png) > 1:
             for i in range(1,len(self.png)):
-                root.find("addImages" + str(i)).find("changeImg").text = "true"
-                root.find("addImages" + str(i)).find("charaName").find("id").text = str(self.name_id) + str(i)
-                root.find("addImages" + str(i)).find("charaName").find("str").text = self.name_str[i]
-                root.find("addImages" + str(i)).find("image").find("id").text = self.default_image_id + str(i)
-                root.find("addImages" + str(i)).find("image").find("str").text = self.default_image_str + str(i)
-                root.find("addImages" + str(i)).find("rank").text = self.transfer_rank[i-1]
+                root.find(f"addImages{i}").find("changeImg").text = "true"
+                root.find(f"addImages{i}").find("charaName").find("id").text = f"{self.name_id}{i}"
+                root.find(f"addImages{i}").find("charaName").find("str").text = self.name_str[i]
+                root.find(f"addImages{i}").find("image").find("id").text = f"{self.default_image_id}{i}"
+                root.find(f"addImages{i}").find("image").find("str").text = f"{self.default_image_str}{i}"
+                root.find(f"addImages{i}").find("rank").text = self.transfer_rank[i-1]
 
-        for i in enumerate(self.rank_reward):
-            current_index = i[0]    # Index
-            current_key = i[1]      # Rank
+        # Original way to modify skill reward
+        # for i in enumerate(self.rank_reward):
+        #     current_index = i[0]    # Index
+        #     current_key = i[1]      # Rank
+        #     current_reward = self.rank_reward[current_key]
+        #     current_block = root.find("ranks").findall("CharaRankData")[current_index]
+        #     # Set Reward ID
+        #     current_block.find("rewardSkillSeed").find("rewardSkillSeed").find("id").text = SKILL_DICT[current_reward]
+        #     # Set Reward String
+        #     current_block.find("rewardSkillSeed").find("rewardSkillSeed").find("str").text = current_reward
+        #     # Set Reward Rank
+        #     root.find("ranks").findall("CharaRankData")[i[0]].find("index").text = current_key
+
+        for current_key in self.rank_reward:
             current_reward = self.rank_reward[current_key]
-            current_block = root.find("ranks").findall("CharaRankData")[current_index]
+            current_reward_str = current_reward[0]
+            current_reward_amount = current_reward[1]
+            current_block = ET.fromstring(RANK_REWARD_XML_TEXT)
             # Set Reward ID
-            current_block.find("rewardSkillSeed").find("rewardSkillSeed").find("id").text = SKILL_DICT[current_reward]
+            current_block.find("rewardSkillSeed").find("rewardSkillSeed").find("id").text = f"{SKILL_DICT[current_reward_str]}{current_reward_amount}"
             # Set Reward String
-            current_block.find("rewardSkillSeed").find("rewardSkillSeed").find("str").text = current_reward
+            current_block.find("rewardSkillSeed").find("rewardSkillSeed").find("str").text = current_reward_str
             # Set Reward Rank
-            root.find("ranks").findall("CharaRankData")[i[0]].find("index").text = current_key
+            current_block.find("index").text = str(current_key)
+            # Append modified block to root
+            root.find("ranks").append(current_block)
 
         tree = ET.ElementTree(root)
+        ET.indent(tree = tree, space = "\t")
         chara_folder = self.opt_folder + "/chara/chara0"+ str(self.chara_id) +"0"
         if not os.path.exists(chara_folder):
             os.makedirs(chara_folder)
-        tree.write(chara_folder + "/Chara.xml")
+        tree.write(chara_folder + "/Chara.xml", encoding="UTF_8", xml_declaration=True)
 
         # Current unused due to don't know how to make works work
         # tree2 = ET.parse(works_xml)
@@ -124,11 +160,10 @@ class Chara:
             root3.find("ddsFile0").find("path").text = f"CHU_UI_Character_{str(self.chara_id)}_0{str(i)}_00.dds"
             root3.find("ddsFile1").find("path").text = f"CHU_UI_Character_{str(self.chara_id)}_0{str(i)}_01.dds"
             root3.find("ddsFile2").find("path").text = f"CHU_UI_Character_{str(self.chara_id)}_0{str(i)}_02.dds"
-
             dds_folder = self.opt_folder + "/ddsImage/ddsImage0" + str(self.chara_id) + str(i) +"/"
             if not os.path.exists(dds_folder):
                 os.makedirs(dds_folder)
-            tree3.write(dds_folder + "/DDSImage.xml")
+            tree3.write(dds_folder + "/DDSImage.xml", encoding="UTF_8", xml_declaration=True)
 
     def to_dds(self):
         """
@@ -195,7 +230,8 @@ class Chara:
         return self.png
 
 test_png = r"D:\StrangeThings\Chunithm related\Character\图片\梅贝尔\CHU_UI_Character_9999_00_00.png"
-test_chara = Chara(name_str="test", chara_id=1234, png1=test_png, rank_reward={}, transfer_rank=[])
+test_rank_reward = {1: ["限界突破の証", 5], 5: ["限界突破の証", 115]}
+test_chara = Chara(name_str="test", chara_id=1234, png1=test_png, rank_reward=test_rank_reward, transfer_rank=[])
 
 test_chara.to_dds()
 test_chara.xml_edit()
