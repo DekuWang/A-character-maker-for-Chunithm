@@ -8,40 +8,9 @@ import xml.etree.ElementTree as ET
 # Third-party modules
 from wand import image
 
-SKILL_DICT = {
-    'Invalid': -1,
-    '限界突破の証': 6100010,
-    '真・限界突破の証': 6100011,
-    '絆・限界突破の証': 6100012,
-    'オールガード【LMN】': 6102000,
-    'ゲージブースト【LMN】': 6102001,
-    'コンボエクステンド【LMN】': 6102002,
-    'アタックギルティ【LMN】': 6102003,
-    'ジャッジメント【LMN】': 6102004,
-    'オーバージャッジ【LMN】': 6102005,
-    '嘆きのしるし【LMN】': 6102006,
-    '勇気のしるし【LMN】': 6102007,
-    '道化師の狂気【LMN】': 6102008
-    }
-
-RANK_REWARD_XML_TEXT = """
-<CharaRankData>
-      <index></index>
-      <type>1</type>
-      <rewardSkillSeed>
-        <rewardSkillSeed>
-          <id></id>
-          <str></str>
-          <data />
-        </rewardSkillSeed>
-      </rewardSkillSeed>
-      <text>
-        <flavorTxtFile>
-          <path />
-        </flavorTxtFile>
-      </text>
-    </CharaRankData>
-"""
+# Project modules
+from config import CHARA_OUTPUT_PATH, CHARA_TEMPLATE, SKILL_DICT, RANK_REWARD_XML_TEXT
+from config import CHARA_DDS_IMAGE_TEMPLATE, CHARA_DDS_OUTPUT_PATH
 
 class Chara:
     """
@@ -54,15 +23,12 @@ class Chara:
         Length of transfer_rank will be the amount of transfer(maxumum 9)
     """
     def __init__(self, name_str:str, chara_id:str, png1:str, rank_reward:dict, transfer_rank:list,
-                 works_id:str = "514", opt_num:str = "A514", work_str:str = "自製"):
-        self.opt_num = opt_num
-        self.opt_folder = "outPut/" + self.opt_num
-
+                 works_id:str = "514", work_str:str = "自製"):
         # For XML
         # self.chara_id looks like 0007
-        self.chara_id = chara_id
+        self.chara_id = str(chara_id).ljust(4, "0")
         # dataName looks like chara000070
-        self.dataname = "chara0"+ str(self.chara_id) +"0"
+        self.dataname = f"chara0{self.chara_id}0"
         # name_id looks like 7
         self.name_id = str(int(self.chara_id))
         self.name_str = [name_str]
@@ -81,13 +47,11 @@ class Chara:
         #For toDDS
         self.png = [png1]
 
-    def xml_edit(self, file_xml:str = r'template/Chara copy.xml',
-                # works_xml:str = r'template/CharaWorks.xml',
-                dds_xml:str = r'template/DDSImage.xml'):
+    def xml_edit(self):
         """
         Function for editing xml file, filling needed blanks
         """
-        tree = ET.parse(file_xml)
+        tree = ET.parse(CHARA_TEMPLATE)
         root = tree.getroot()
 
         root.find("dataName").text = self.dataname
@@ -136,8 +100,8 @@ class Chara:
             root.find("ranks").append(current_block)
 
         tree = ET.ElementTree(root)
-        ET.indent(tree = tree, space = "\t")
-        chara_folder = self.opt_folder + "/chara/chara0"+ str(self.chara_id) +"0"
+        ET.indent(tree = tree, space = " ")
+        chara_folder = f"{CHARA_OUTPUT_PATH}/chara0{str(self.chara_id)}0"
         if not os.path.exists(chara_folder):
             os.makedirs(chara_folder)
         tree.write(chara_folder + "/Chara.xml", encoding="UTF_8", xml_declaration=True)
@@ -152,7 +116,7 @@ class Chara:
         #     tree2.write(workFolder + "/CharaWorks.xml")
 
         for i in range(len(self.png)):
-            tree3 = ET.parse(dds_xml)
+            tree3 = ET.parse(CHARA_DDS_IMAGE_TEMPLATE)
             root3 = tree3.getroot()
             root3.find("dataName").text = "ddsImage0" + str(self.chara_id) + str(i)
             root3.find("name").find("id").text = self.default_image_id + str(i)
@@ -160,7 +124,7 @@ class Chara:
             root3.find("ddsFile0").find("path").text = f"CHU_UI_Character_{str(self.chara_id)}_0{str(i)}_00.dds"
             root3.find("ddsFile1").find("path").text = f"CHU_UI_Character_{str(self.chara_id)}_0{str(i)}_01.dds"
             root3.find("ddsFile2").find("path").text = f"CHU_UI_Character_{str(self.chara_id)}_0{str(i)}_02.dds"
-            dds_folder = self.opt_folder + "/ddsImage/ddsImage0" + str(self.chara_id) + str(i) +"/"
+            dds_folder = f"{CHARA_DDS_OUTPUT_PATH}/ddsImage0{str(self.chara_id)}{str(i)}/"
             if not os.path.exists(dds_folder):
                 os.makedirs(dds_folder)
             tree3.write(dds_folder + "/DDSImage.xml", encoding="UTF_8", xml_declaration=True)
@@ -172,7 +136,7 @@ class Chara:
         for i in enumerate(self.png):
             current_index = i[0]
             dds_name = self.make_ddsname(current_index)
-            dds_folder = f"{self.opt_folder}/ddsImage/ddsImage0{str(self.chara_id)}{str(current_index)}/"
+            dds_folder = f"{CHARA_DDS_OUTPUT_PATH}/ddsImage0{str(self.chara_id)}{str(current_index)}/"
 
             if not os.path.exists(dds_folder):
                 os.makedirs(dds_folder)

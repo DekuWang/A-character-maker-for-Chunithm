@@ -10,15 +10,15 @@ import xml.etree.ElementTree as ET
 from wand.image import Image
 from wand.drawing import Drawing
 
+# Project Modules
+from config import NAMEPLATE_OUTPUT_PATH, NAMEPLATE_BACKGROUND, NAMEPLATE_TEMPATE
+
 class Nameplate:
     """
     A class for creating nameplate
     """
     def __init__(self, plate_id: int, name: str, image_png: str,
-                 explain_text: str, default_have: bool, opt_num = "A514"):
-        self.opt_num = opt_num
-        self.opt_folder = "outPut/" + self.opt_num
-
+                 explain_text: str, default_have: bool):
         # tell user to put an plate_id larger than 10000
         self.plate_id = plate_id
         self.name = name
@@ -28,16 +28,16 @@ class Nameplate:
         # image filename processed by the program
         self.output_image = f"CHU_UI_NamePlate_000{self.plate_id}.png"
         self.dataname = f"namePlate000{self.plate_id}"
-        self.plate_folder = self.opt_folder + "/namePlate/" + self.dataname
+        self.plate_folder = f"{NAMEPLATE_OUTPUT_PATH}/{self.dataname}"
 
-    def xml_edit(self, file_xml = r'template/NamePlate.xml'):
+    def xml_edit(self):
         """
         Filling the needed data into the xml template
         """
         # Make Path Folder
         if not os.path.exists(self.plate_folder):
             os.makedirs(self.plate_folder)
-        tree = ET.parse(file_xml)
+        tree = ET.parse(NAMEPLATE_TEMPATE)
         root = tree.getroot()
         root.find("dataName").text = self.dataname
         root.find("name").find("id").text = str(self.plate_id)
@@ -66,7 +66,7 @@ class Nameplate:
         # nameplate size = 185 * 565 (h * w)
         # filename format: CHU_UI_NamePlate_00010149.dds
 
-        background = Image(filename = r"template/nameplateBG.png")
+        background = Image(NAMEPLATE_BACKGROUND)
         background.colorspace = "transparent"
         foreground = Image(filename = self.image_png)
         foreground.resize(width = 565, height = 185)
@@ -80,5 +80,4 @@ class Nameplate:
                   width = foreground.width,
                   image = foreground)
             draw(background)
-            # background.save(filename = self.plate_folder + "/output.png")
             background.save(filename = f"{self.plate_folder}/{self.output_image}")

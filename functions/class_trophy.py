@@ -5,12 +5,15 @@ Module for storing trophy class
 import os
 import xml.etree.ElementTree as ET
 
+# Project Module
+from config import TROPHY_OUTPUT_PATH, TROPHY_TEMPLATE
+
 class Trophy:
     """
     Class for creaeting Trophy
     """
     def __init__(self, trophy_id:int, name:str, default_have:bool,
-                 rare_type:int, opt_num:str = "A514", explain_text:str = "-"):
+                 rare_type:int, explain_text:str = "-"):
         self.trophy_id = trophy_id
         self.name = name
         self.explain_text = explain_text
@@ -18,7 +21,7 @@ class Trophy:
         self.rare_type = rare_type
 
         self.dataname = f"trophy00{trophy_id}"
-        self.trophy_folder = f"outPut/{opt_num}/trophy/{self.dataname}"
+        self.trophy_folder = f"{TROPHY_OUTPUT_PATH}/{self.dataname}"
 
     def edit_xml(self):
         """
@@ -27,7 +30,7 @@ class Trophy:
         if not os.path.exists(self.trophy_folder):
             os.makedirs(self.trophy_folder)
 
-        tree = ET.parse("template/Trophy.xml")
+        tree = ET.parse(TROPHY_TEMPLATE)
         root = tree.getroot()
 
         root.find("dataName").text = self.dataname

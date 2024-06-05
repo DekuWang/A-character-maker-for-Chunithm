@@ -2,6 +2,8 @@ testImage
 outPut
 build
 dist
-functions\__pycache__
+functions/__pycache__
 designer.exe.lnk
 mainPage.spec
+functions/map_related
+template/MapXML
