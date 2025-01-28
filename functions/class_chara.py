@@ -26,7 +26,7 @@ class Chara:
                  works_id:str = "514", work_str:str = "自製"):
         # For XML
         # self.chara_id looks like 0007
-        self.chara_id = str(chara_id).ljust(4, "0")
+        self.chara_id = str(chara_id).rjust(4, "0")
         # dataName looks like chara000070
         self.dataname = f"chara0{self.chara_id}0"
         # name_id looks like 7
@@ -100,7 +100,7 @@ class Chara:
             root.find("ranks").append(current_block)
 
         tree = ET.ElementTree(root)
-        ET.indent(tree = tree, space = " ")
+        ET.indent(tree = tree, space = "\t")
         chara_folder = f"{CHARA_OUTPUT_PATH}/chara0{str(self.chara_id)}0"
         if not os.path.exists(chara_folder):
             os.makedirs(chara_folder)
@@ -127,6 +127,7 @@ class Chara:
             dds_folder = f"{CHARA_DDS_OUTPUT_PATH}/ddsImage0{str(self.chara_id)}{str(i)}/"
             if not os.path.exists(dds_folder):
                 os.makedirs(dds_folder)
+            ET.indent(tree = tree3, space = "\t")
             tree3.write(dds_folder + "/DDSImage.xml", encoding="UTF_8", xml_declaration=True)
 
     def to_dds(self):
@@ -193,9 +194,10 @@ class Chara:
         """
         return self.png
 
-test_png = r"D:\StrangeThings\Chunithm related\Character\图片\梅贝尔\CHU_UI_Character_9999_00_00.png"
-test_rank_reward = {1: ["限界突破の証", 5], 5: ["限界突破の証", 115]}
-test_chara = Chara(name_str="test", chara_id=1234, png1=test_png, rank_reward=test_rank_reward, transfer_rank=[])
+# For testing use
+# test_png = r"D:\StrangeThings\Chunithm related\Character\图片\梅贝尔\CHU_UI_Character_9999_00_00.png"
+# test_rank_reward = {1: ["限界突破の証", 5], 5: ["限界突破の証", 115]}
+# test_chara = Chara(name_str="test", chara_id=1234, png1=test_png, rank_reward=test_rank_reward, transfer_rank=[])
 
-test_chara.to_dds()
-test_chara.xml_edit()
+# test_chara.to_dds()
+# test_chara.xml_edit()

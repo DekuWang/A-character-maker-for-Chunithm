@@ -59,7 +59,7 @@ RANK_REWARD_XML_TEXT = """
 
 # For nameplate
 NAMEPLATE_OUTPUT_PATH = f"{OUTPUT_PATH}/namePlate"
-NAMEPLATE_TEMPATE = r"template/NamePlate.xml}"
+NAMEPLATE_TEMPATE = r"template/NamePlate.xml"
 NAMEPLATE_BACKGROUND = r"template/nameplateBG.png"
 
 # For Trophy

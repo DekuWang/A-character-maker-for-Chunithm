@@ -41,4 +41,8 @@ class Trophy:
         root.find("rareType").text = str(self.rare_type)
 
         tree = ET.ElementTree(root)
-        tree.write(self.trophy_folder+"/Trophy.xml")
+        tree.write(self.trophy_folder+"/Trophy.xml", encoding="UTF_8", xml_declaration=True)
+
+# For testing use
+# test_trophy = Trophy(trophy_id=1234, name = "test", default_have=1, rare_type=5, explain_text = "测试")
+# test_trophy.edit_xml()

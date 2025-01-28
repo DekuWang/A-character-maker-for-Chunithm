@@ -35,6 +35,7 @@ class Work():
 
         ET.indent(tree=work_xml, space = " ")
         work_xml.write(output_path + "CharaWorks.xml", encoding="UTF_8", xml_declaration=True)
-
-test_work = Work(1234, "test")
-test_work.edit_xml()
+ 
+# For testing use
+# test_work = Work(1234, "test")
+# test_work.edit_xml()

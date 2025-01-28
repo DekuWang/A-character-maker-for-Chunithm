@@ -21,13 +21,14 @@ class Nameplate:
                  explain_text: str, default_have: bool):
         # tell user to put an plate_id larger than 10000
         self.plate_id = plate_id
+        self.plate_id_str = str(plate_id).rjust(8,"0")
         self.name = name
         self.image_png = image_png
         self.default_have = "true" if default_have else "false"
         self.explain_text = explain_text
         # image filename processed by the program
-        self.output_image = f"CHU_UI_NamePlate_000{self.plate_id}.png"
-        self.dataname = f"namePlate000{self.plate_id}"
+        self.output_image = f"CHU_UI_NamePlate_{self.plate_id_str}.png"
+        self.dataname = f"namePlate{self.plate_id_str}"
         self.plate_folder = f"{NAMEPLATE_OUTPUT_PATH}/{self.dataname}"
 
     def xml_edit(self):
@@ -49,7 +50,7 @@ class Nameplate:
         tree = ET.ElementTree(root)
         if not os.path.exists(self.plate_folder):
             os.makedirs(self.plate_folder)
-        tree.write(self.plate_folder + "/NamePlate.xml")
+        tree.write(self.plate_folder + "/NamePlate.xml", encoding="UTF_8", xml_declaration=True)
 
     # def print_all(self):
     #     print(f"id:             {self.id}")
@@ -66,7 +67,7 @@ class Nameplate:
         # nameplate size = 185 * 565 (h * w)
         # filename format: CHU_UI_NamePlate_00010149.dds
 
-        background = Image(NAMEPLATE_BACKGROUND)
+        background = Image(filename=NAMEPLATE_BACKGROUND)
         background.colorspace = "transparent"
         foreground = Image(filename = self.image_png)
         foreground.resize(width = 565, height = 185)
@@ -80,4 +81,12 @@ class Nameplate:
                   width = foreground.width,
                   image = foreground)
             draw(background)
+            if not os.path.exists(self.plate_folder):
+                os.makedirs(self.plate_folder)
             background.save(filename = f"{self.plate_folder}/{self.output_image}")
+
+# For testing use
+# test_plate = Nameplate(plate_id=1234, name = "test", image_png=r"D:\StrangeThings\Chunithm related\Character\图片\梅贝尔\CHU_UI_Character_9999_00_00.png",
+#                        explain_text="test", default_have=1)
+# test_plate.to_dds()
+# test_plate.xml_edit()
