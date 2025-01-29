@@ -3,6 +3,7 @@ Module for making Characters, including editing needed xml file and transfer ima
 """
 # Built-in Modules
 import os
+import sys
 import xml.etree.ElementTree as ET
 
 # Third-party modules
@@ -22,7 +23,7 @@ class Chara:
         transfer_rank will be a list looks like [level1, level2, ...]
         Length of transfer_rank will be the amount of transfer(maxumum 9)
     """
-    def __init__(self, name_str:str, chara_id:str, png1:str, rank_reward:dict, transfer_rank:list,
+    def __init__(self, name_str:str, chara_id:str, png1:str, rank_reward:dict = [], transfer_rank:list = [],
                  works_id:str = "514", work_str:str = "自製"):
         # For XML
         # self.chara_id looks like 0007
