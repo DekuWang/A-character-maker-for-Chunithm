@@ -196,8 +196,25 @@ class Chara:
 
 # For testing use
 # test_png = r"D:\StrangeThings\Chunithm related\Character\图片\梅贝尔\CHU_UI_Character_9999_00_00.png"
-# test_rank_reward = {1: ["限界突破の証", 5], 5: ["限界突破の証", 115]}
-# test_chara = Chara(name_str="test", chara_id=1234, png1=test_png, rank_reward=test_rank_reward, transfer_rank=[])
+# test_rank_reward = {1: ["限界突破の証", 5]}
+# test_chara = Chara(name_str="test", chara_id=9235, png1=test_png, rank_reward=test_rank_reward, transfer_rank=[])
+
+# test_chara.add_image(test_png)
+# test_chara.transfer_rank.append("5")
+# test_chara.addname_str("测试")
+
+# test_chara.add_image(test_png)
+# test_chara.transfer_rank.append("5")
+# test_chara.addname_str("测试")
+# test_chara.add_image(test_png)
+# test_chara.transfer_rank.append("5")
+# test_chara.addname_str("测试")
+# test_chara.add_image(test_png)
+# test_chara.transfer_rank.append("5")
+# test_chara.addname_str("测试")
+# test_chara.add_image(test_png)
+# test_chara.transfer_rank.append("5")
+# test_chara.addname_str("测试")
 
 # test_chara.to_dds()
 # test_chara.xml_edit()
