@@ -19,7 +19,7 @@ MAPAREA_TEMPLATE = r"template/MapXML/MapArea.xml"
 
 # For character
 CHARA_OUTPUT_PATH = f"{OUTPUT_PATH}/chara"
-CHARA_TEMPLATE = r"template/Chara copy.xml"
+CHARA_TEMPLATE = r"template/Chara.xml"
 CHARA_DDS_OUTPUT_PATH = f"{OUTPUT_PATH}/ddsImage"
 CHARA_DDS_IMAGE_TEMPLATE = r"template/DDSImage.xml"
 SKILL_DICT = {
@@ -40,21 +40,21 @@ SKILL_DICT = {
 
 RANK_REWARD_XML_TEXT = """
 <CharaRankData>
-      <index></index>
-      <type>1</type>
-      <rewardSkillSeed>
-        <rewardSkillSeed>
-          <id></id>
-          <str></str>
-          <data />
-        </rewardSkillSeed>
-      </rewardSkillSeed>
-      <text>
-        <flavorTxtFile>
-          <path />
-        </flavorTxtFile>
-      </text>
-    </CharaRankData>
+  <index></index>
+  <type>1</type>
+  <rewardSkillSeed>
+    <rewardSkillSeed>
+      <id></id>
+      <str></str>
+      <data />
+    </rewardSkillSeed>
+  </rewardSkillSeed>
+  <text>
+    <flavorTxtFile>
+      <path />
+    </flavorTxtFile>
+  </text>
+</CharaRankData>
 """
 
 # For nameplate
@@ -67,5 +67,5 @@ TROPHY_OUTPUT_PATH = f"{OUTPUT_PATH}/trophy"
 TROPHY_TEMPLATE = r"template/Trophy.xml"
 
 # For charaWork
-CHARAWORK_OUTPUT_PATH = f"{OUTPUT_PATH}/CharaWorks"
+CHARAWORK_OUTPUT_PATH = f"{OUTPUT_PATH}/charaWorks"
 CHARAWORK_TEMPLATE = r"template/CharaWorks.xml"

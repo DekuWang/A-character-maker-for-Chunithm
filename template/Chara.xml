@@ -2,13 +2,13 @@
 <CharaData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <dataName></dataName>
   <releaseTagName>
-    <id>14</id>
-    <str>v2 2.10.00</str>
+    <id>17</id>
+    <str>v2 2.25.00</str>
     <data />
   </releaseTagName>
   <netOpenName>
-    <id>2300</id>
-    <str>v2_10 11_2</str>
+    <id>2551</id>
+    <str>v2_25 11_1</str>
     <data />
   </netOpenName>
   <disableFlag>false</disableFlag>
@@ -34,7 +34,6 @@
   <normCondition>
     <conditions />
   </normCondition>
-  <dressCode>0</dressCode>
   <defaultImages>
     <id></id>
     <str></str>
@@ -168,117 +167,5 @@
   </addImages9>
   <priority>0</priority>
   <ranks>
-    <CharaRankData>
-      <index>1</index>
-      <type>1</type>
-      <rewardSkillSeed>
-        <rewardSkillSeed>
-          <id>61000025</id>
-          <str>ゲージブースト×5</str>
-          <data />
-        </rewardSkillSeed>
-      </rewardSkillSeed>
-      <text>
-        <flavorTxtFile>
-          <path />
-        </flavorTxtFile>
-      </text>
-    </CharaRankData>
-    <CharaRankData>
-      <index>5</index>
-      <type>1</type>
-      <rewardSkillSeed>
-        <rewardSkillSeed>
-          <id>61000021</id>
-          <str>ゲージブースト×1</str>
-          <data />
-        </rewardSkillSeed>
-      </rewardSkillSeed>
-      <text>
-        <flavorTxtFile>
-          <path />
-        </flavorTxtFile>
-      </text>
-    </CharaRankData>
-    <CharaRankData>
-      <index>10</index>
-      <type>1</type>
-      <rewardSkillSeed>
-        <rewardSkillSeed>
-          <id>61000025</id>
-          <str>ゲージブースト×5</str>
-          <data />
-        </rewardSkillSeed>
-      </rewardSkillSeed>
-      <text>
-        <flavorTxtFile>
-          <path />
-        </flavorTxtFile>
-      </text>
-    </CharaRankData>
-    <CharaRankData>
-      <index>15</index>
-      <type>1</type>
-      <rewardSkillSeed>
-        <rewardSkillSeed>
-          <id>61000021</id>
-          <str>ゲージブースト×1</str>
-          <data />
-        </rewardSkillSeed>
-      </rewardSkillSeed>
-      <text>
-        <flavorTxtFile>
-          <path />
-        </flavorTxtFile>
-      </text>
-    </CharaRankData>
-    <CharaRankData>
-      <index>25</index>
-      <type>1</type>
-      <rewardSkillSeed>
-        <rewardSkillSeed>
-          <id>61000101</id>
-          <str>限界突破の証×1</str>
-          <data />
-        </rewardSkillSeed>
-      </rewardSkillSeed>
-      <text>
-        <flavorTxtFile>
-          <path />
-        </flavorTxtFile>
-      </text>
-    </CharaRankData>
-    <CharaRankData>
-      <index>50</index>
-      <type>1</type>
-      <rewardSkillSeed>
-        <rewardSkillSeed>
-          <id>61000111</id>
-          <str>真・限界突破の証×1</str>
-          <data />
-        </rewardSkillSeed>
-      </rewardSkillSeed>
-      <text>
-        <flavorTxtFile>
-          <path />
-        </flavorTxtFile>
-      </text>
-    </CharaRankData>
-    <CharaRankData>
-      <index>100</index>
-      <type>1</type>
-      <rewardSkillSeed>
-        <rewardSkillSeed>
-          <id>61000121</id>
-          <str>絆・限界突破の証×1</str>
-          <data />
-        </rewardSkillSeed>
-      </rewardSkillSeed>
-      <text>
-        <flavorTxtFile>
-          <path />
-        </flavorTxtFile>
-      </text>
-    </CharaRankData>
   </ranks>
 </CharaData>

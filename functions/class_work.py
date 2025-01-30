@@ -13,7 +13,7 @@ class Work():
     """
     The class for generating charawork files, basically XML files
     """
-    def __init__(self, work_id, work_name):
+    def __init__(self, work_id: int, work_name: str):
         self.work_id = str(work_id)
         self.work_name = work_name
         self.dataname = f"charaWorks{self.work_id.rjust(6, '0')}"
@@ -37,5 +37,5 @@ class Work():
         work_xml.write(output_path + "CharaWorks.xml", encoding="UTF_8", xml_declaration=True)
  
 # For testing use
-# test_work = Work(1234, "test")
+# test_work = Work(514, "自製")
 # test_work.edit_xml()

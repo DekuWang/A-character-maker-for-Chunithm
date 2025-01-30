@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<DDSImageData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<DDSImageData>
   <dataName></dataName>
   <name>
     <id></id>
@@ -16,8 +15,8 @@
     <path></path>
   </ddsFile2>
   <netOpenName>
-    <id>2300</id>
-    <str>v2_10 11_2</str>
+    <id>2551</id>
+    <str>v2_25 11_1</str>
     <data />
   </netOpenName>
 </DDSImageData>

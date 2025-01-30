@@ -10,7 +10,7 @@ from config import TROPHY_OUTPUT_PATH, TROPHY_TEMPLATE
 
 class Trophy:
     """
-    Class for creaeting Trophy
+    Class for creating Trophy
     """
     def __init__(self, trophy_id:int, name:str, default_have:bool,
                  rare_type:int, explain_text:str = "-"):
@@ -36,6 +36,7 @@ class Trophy:
         root.find("dataName").text = self.dataname
         root.find("name").find("id").text = str(self.trophy_id)
         root.find("name").find("str").text = self.name
+        root.find("sortName").text = self.name
         root.find("explainText").text = self.explain_text
         root.find("defaultHave").text = self.default_have
         root.find("rareType").text = str(self.rare_type)
