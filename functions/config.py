@@ -69,3 +69,12 @@ TROPHY_TEMPLATE = r"template/Trophy.xml"
 # For charaWork
 CHARAWORK_OUTPUT_PATH = f"{OUTPUT_PATH}/charaWorks"
 CHARAWORK_TEMPLATE = r"template/CharaWorks.xml"
+
+# For enabling works
+WORK_SORT_TEMPLATE = """
+    <StringID>
+      <id>87</id>
+      <str />
+      <data />
+    </StringID>
+"""

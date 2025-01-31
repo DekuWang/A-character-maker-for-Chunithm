@@ -8,3 +8,4 @@ mainPage.spec
 functions/map_related
 template/MapXML
 __pycache__
+test
