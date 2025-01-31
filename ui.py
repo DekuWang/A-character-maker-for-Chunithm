@@ -146,7 +146,7 @@ def create_character(win = None):
             root.lift()
             return
         else:
-            CharaList.append(Chara(name, ID, file_path))
+            CharaList.append(Chara(name, ID, file_path, rank_reward = [], transfer_rank = []))
        
     def finish_chara(name, ID):
         try:
@@ -210,7 +210,6 @@ def create_character(win = None):
             print(rank_entry.get())
             CharaList[len(CharaList)-1].transfer_rank.append(rank_entry.get())
 
-
         def transform_finish():
             """
             finish the transform
@@ -248,11 +247,43 @@ def main():
         create_character(win)
 
     def generate_file():
-        for i in CharaList:
-            i.xml_edit()
-            i.to_dds()
-        Work(514, "自製").edit_xml()
-        messagebox.showinfo("Done", "Done.")
+
+        # This part for input work id and work string
+        root = tk.Toplevel()
+        root.lift()
+        root.geometry("300x350")
+
+        work_id_label = tk.Label(root, text="Work ID:", justify = "left", anchor = "w")
+        work_id_label.place(x = 50, y = 50, width=100, height=25)
+        work_id_entry = tk.Entry(root)
+        work_id_entry.place(x = 150, y = 50, width=100, height=25)
+
+        work_str_label = tk.Label(root, text="Work String:", justify = "left", anchor = "w")
+        work_str_label.place(x = 50, y = 100, width=100, height=25)
+        work_str_entry = tk.Entry(root)
+        work_str_entry.place(x = 150, y = 100, width=100, height=25)
+
+        confirm_button = Button(root, text="Confirm", command = lambda: finish())
+        confirm_button.place(x = 100, y = 150, width=100, height=25)
+
+        hint_label = tk.Label(root,
+                              text="*Default value will be applied if left blank\n work id: 514, work string: 自製",
+                              justify = "left")
+        hint_label.place(x = 40, y = 200, width=250, height=50)
+
+        work_id = work_id_entry.get() or "514"
+        work_str = work_str_entry.get() or "自製"
+
+        def finish():
+            for i in CharaList:
+                i.set_works(work_id, work_str)
+                i.xml_edit()
+                i.to_dds()
+
+            Work(work_id, work_str).edit_xml()
+
+            messagebox.showinfo("Info", "File generated ～(∠・ω< )⌒★")
+            root.destroy()
 
     create_button = Button(root, text="CreateChar",command = lambda: open_create_character())
     create_button.place(x = 100, y = 50, width=100, height=50)

@@ -30,7 +30,7 @@ class Chara:
                  png1:str,
                  rank_reward:dict,
                  transfer_rank:list[int],
-                 works_id:str = "514",
+                 work_id:str = "514",
                  work_str:str = "自製"):
         # For XML
         # self.chara_id looks like 0007
@@ -41,7 +41,7 @@ class Chara:
         self.name_id            = str(int(self.chara_id))
         self.name_str           = [name_str]
         self.sort_name          = self.name_str[0]
-        self.works_id           = works_id
+        self.work_id           = work_id
         self.work_str           = work_str
         # default_image_id looks like 7
         self.default_image_id   = str(int(self.name_id))
@@ -66,7 +66,7 @@ class Chara:
         root.find("name").find("id").text           = self.name_id + "0"
         root.find("name").find("str").text          = self.name_str[0]
         root.find("sortName").text                  = self.sort_name
-        root.find("works").find("id").text          = self.works_id
+        root.find("works").find("id").text          = self.work_id
         root.find("works").find("str").text         = self.work_str
         root.find("defaultImages").find("id").text  = self.default_image_id + "0"
         root.find("defaultImages").find("str").text = self.default_image_str + "0"
@@ -117,7 +117,7 @@ class Chara:
         # Current unused due to don't know how to make works work
         # tree2 = ET.parse(works_xml)
         # root2 = tree2.getroot()
-        # workFolder = self.opt_folder + "/charaWorks/charaWorks000"+ str(self.works_id)
+        # workFolder = self.opt_folder + "/charaWorks/charaWorks000"+ str(self.work_id)
         # if not os.path.exists(workFolder):
         #     os.makedirs(workFolder)
         # if not os.path.exists(workFolder + "/CharaWorks.xml"):
@@ -201,6 +201,13 @@ class Chara:
         Function for getting image from current Character
         """
         return self.png
+    
+    def set_works(self, work_id: str, work_str: str):
+        """
+        Function for updating current character's work
+        """
+        self.work_id = work_id
+        self.work_str = work_str
 
 # For testing use
 # test_png = r"D:\StrangeThings\Chunithm related\Character\图片\梅贝尔\CHU_UI_Character_9999_00_00.png"
