@@ -29,6 +29,7 @@ def edit_work_sort(file_path: str, work_id: int):
         existed_work_ids.append(i.find("id").text)
 
     if work_id not in existed_work_ids:
+        print("work_id not found, gonna add it...")
         work_id_block = ET.fromstring(WORK_SORT_TEMPLATE)
         work_id_block.find("id").text = str(work_id)
 
